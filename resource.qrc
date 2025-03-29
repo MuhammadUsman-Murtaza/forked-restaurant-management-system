@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>Icons/bell.svg</file>
+        <file>Icons/bill.svg</file>
+        <file>Icons/booking.svg</file>
+        <file>Icons/box.svg</file>
+        <file>Icons/checklist.svg</file>
+        <file>Icons/home.svg</file>
+        <file>Icons/logout.svg</file>
+        <file>Icons/maximize.svg</file>
+        <file>Icons/menu.svg</file>
+        <file>Icons/minimize.svg</file>
+        <file>Icons/table.svg</file>
+        <file>Icons/x-circle.svg</file>
+        <file>Icons/restaurant-cutlery-circular-symbol-of-a-spoon-and-a-fork-in-a-circle.svg</file>
+        <file>Icons/close.svg</file>
+        <file>Icons/minimize-sign.svg</file>
+        <file>Icons/stop.svg</file>
+    </qresource>
+</RCC>
