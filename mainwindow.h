@@ -2,6 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QVector>
+#include <QUuid>
+#include <QDateTime>
+#include "ordercard.h"
 #include <QComboBox>
 
 QT_BEGIN_NAMESPACE
@@ -9,6 +13,8 @@ namespace Ui {
 class MainWindow;
 }
 QT_END_NAMESPACE
+
+class OrderCard;
 
 class MainWindow : public QMainWindow
 {
@@ -28,10 +34,14 @@ private slots:
     void on_BillingBtn_clicked();
     void on_ReservationsBtn_clicked();
     void on_InventoryBtn_clicked();
-
+    void on_FoodAddBtn_clicked();
+    void on_FoodFinalizeBtn_clicked();
 
 
 private:
     Ui::MainWindow *ui;
+    void addOrderCards(OrderCard* card);
+    void addOrder(OrderCard* card);
+
 };
 #endif // MAINWINDOW_H

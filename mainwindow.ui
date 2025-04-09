@@ -7,11 +7,11 @@
     <x>0</x>
     <y>0</y>
     <width>1014</width>
-    <height>611</height>
+    <height>623</height>
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+   <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -110,23 +110,8 @@ QComboBox QAbstractItemView {
 </string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QHBoxLayout" name="horizontalLayout_3">
-    <property name="spacing">
-     <number>0</number>
-    </property>
-    <property name="leftMargin">
-     <number>0</number>
-    </property>
-    <property name="topMargin">
-     <number>0</number>
-    </property>
-    <property name="rightMargin">
-     <number>0</number>
-    </property>
-    <property name="bottomMargin">
-     <number>0</number>
-    </property>
-    <item>
+   <layout class="QFormLayout" name="formLayout">
+    <item row="0" column="0">
      <widget class="QWidget" name="LeftMenuContainer" native="true">
       <layout class="QVBoxLayout" name="verticalLayout_6">
        <property name="spacing">
@@ -144,7 +129,7 @@ QComboBox QAbstractItemView {
        <property name="bottomMargin">
         <number>0</number>
        </property>
-       <item alignment="Qt::AlignmentFlag::AlignLeft">
+       <item>
         <widget class="QWidget" name="LeftMenuSubContainer" native="true">
          <layout class="QVBoxLayout" name="verticalLayout_7">
           <property name="leftMargin">
@@ -156,7 +141,7 @@ QComboBox QAbstractItemView {
           <property name="rightMargin">
            <number>12</number>
           </property>
-          <item alignment="Qt::AlignmentFlag::AlignTop">
+          <item>
            <widget class="QFrame" name="frame">
             <property name="styleSheet">
              <string notr="true"/>
@@ -294,6 +279,9 @@ QComboBox QAbstractItemView {
                  <bold>true</bold>
                 </font>
                </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="toolTip">
                 <string>Tables</string>
                </property>
@@ -317,6 +305,9 @@ QComboBox QAbstractItemView {
              </item>
              <item>
               <widget class="QPushButton" name="MenuBtn">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="toolTip">
                 <string>Menu</string>
                </property>
@@ -343,6 +334,9 @@ QComboBox QAbstractItemView {
              </item>
              <item>
               <widget class="QPushButton" name="OrdersBtn">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="toolTip">
                 <string>Orders</string>
                </property>
@@ -366,6 +360,9 @@ QComboBox QAbstractItemView {
              </item>
              <item>
               <widget class="QPushButton" name="BillingBtn">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="toolTip">
                 <string>Billing</string>
                </property>
@@ -389,6 +386,9 @@ QComboBox QAbstractItemView {
              </item>
              <item>
               <widget class="QPushButton" name="ReservationsBtn">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="toolTip">
                 <string>Reservations</string>
                </property>
@@ -412,6 +412,9 @@ QComboBox QAbstractItemView {
              </item>
              <item>
               <widget class="QPushButton" name="InventoryBtn">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="toolTip">
                 <string>Inventory</string>
                </property>
@@ -435,6 +438,9 @@ QComboBox QAbstractItemView {
              </item>
              <item>
               <widget class="QPushButton" name="LogoutBtn">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="toolTip">
                 <string>Logout</string>
                </property>
@@ -488,7 +494,7 @@ QComboBox QAbstractItemView {
       </layout>
      </widget>
     </item>
-    <item>
+    <item row="0" column="1">
      <widget class="QWidget" name="MainBodyContainer" native="true">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -585,29 +591,50 @@ QComboBox QAbstractItemView {
             <property name="frameShape">
              <enum>QFrame::Shape::StyledPanel</enum>
             </property>
-            <property name="frameShadow">
-             <enum>QFrame::Shadow::Raised</enum>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout">
-             <property name="spacing">
-              <number>10</number>
-             </property>
-             <property name="leftMargin">
-              <number>0</number>
-             </property>
-             <property name="topMargin">
-              <number>0</number>
-             </property>
-             <property name="rightMargin">
-              <number>0</number>
-             </property>
-             <property name="bottomMargin">
-              <number>0</number>
-             </property>
+            <layout class="QVBoxLayout" name="verticalLayout_18">
              <item>
-              <widget class="QPushButton" name="pushButton_3">
+              <widget class="QFrame" name="frame_4">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="styleSheet">
-                <string notr="true">QPushButton {
+                <string notr="true"/>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::Shape::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Shadow::Raised</enum>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout">
+                <property name="spacing">
+                 <number>10</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QPushButton" name="pushButton_2">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
     /* Custom style or reset styles */
     background-color: none;
     color: black;
@@ -615,55 +642,88 @@ QComboBox QAbstractItemView {
    padding: 0px;
 }
 </string>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset resource="resource.qrc">
-                 <normaloff>:/icons/Icons/minimize-sign.svg</normaloff>:/icons/Icons/minimize-sign.svg</iconset>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="MaximumBtn">
-               <property name="styleSheet">
-                <string notr="true">QPushButton {
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="resource.qrc">
+                    <normaloff>:/icons/Icons/minimize-sign.svg</normaloff>:/icons/Icons/minimize-sign.svg</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton_3">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
     /* Custom style or reset styles */
     background-color: none;
     color: black;
     border: none;
    padding: 0px;
-}</string>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset resource="resource.qrc">
-                 <normaloff>:/icons/Icons/stop.svg</normaloff>:/icons/Icons/stop.svg</iconset>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="CrossBtn">
-               <property name="styleSheet">
-                <string notr="true">QPushButton {
+}
+</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="resource.qrc">
+                    <normaloff>:/icons/Icons/stop.svg</normaloff>:/icons/Icons/stop.svg</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton_4">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
     /* Custom style or reset styles */
     background-color: none;
     color: black;
     border: none;
    padding: 0px;
-}</string>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset resource="resource.qrc">
-                 <normaloff>:/icons/Icons/close.svg</normaloff>:/icons/Icons/close.svg</iconset>
-               </property>
+}
+</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="resource.qrc">
+                    <normaloff>:/icons/Icons/close.svg</normaloff>:/icons/Icons/close.svg</iconset>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </widget>
+             </item>
+             <item>
+              <spacer name="verticalSpacer_7">
+               <property name="orientation">
+                <enum>Qt::Orientation::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
              </item>
             </layout>
            </widget>
@@ -704,7 +764,7 @@ border-radius: 10px;</string>
                    </property>
                    <property name="font">
                     <font>
-                     <family>Franklin Gothic</family>
+                     <family>Franklin Gothic Medium</family>
                      <pointsize>12</pointsize>
                     </font>
                    </property>
@@ -726,9 +786,12 @@ border-radius: 10px;</string>
                   <widget class="QComboBox" name="Table6_Status">
                    <property name="font">
                     <font>
-                     <family>Franklin Gothic</family>
+                     <family>Franklin Gothic Medium</family>
                      <pointsize>12</pointsize>
                     </font>
+                   </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
                    </property>
                    <property name="layoutDirection">
                     <enum>Qt::LayoutDirection::LeftToRight</enum>
@@ -765,7 +828,7 @@ QComboBox QAbstractItemView {
 </string>
                    </property>
                    <property name="currentIndex">
-                    <number>-1</number>
+                    <number>0</number>
                    </property>
                    <property name="iconSize">
                     <size>
@@ -822,7 +885,7 @@ border-radius: 10px;</string>
                    </property>
                    <property name="font">
                     <font>
-                     <family>Franklin Gothic</family>
+                     <family>Franklin Gothic Medium</family>
                      <pointsize>12</pointsize>
                     </font>
                    </property>
@@ -844,9 +907,12 @@ border-radius: 10px;</string>
                   <widget class="QComboBox" name="Table4_Status">
                    <property name="font">
                     <font>
-                     <family>Franklin Gothic</family>
+                     <family>Franklin Gothic Medium</family>
                      <pointsize>12</pointsize>
                     </font>
+                   </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
                    </property>
                    <property name="layoutDirection">
                     <enum>Qt::LayoutDirection::LeftToRight</enum>
@@ -883,7 +949,7 @@ QComboBox QAbstractItemView {
 </string>
                    </property>
                    <property name="currentIndex">
-                    <number>-1</number>
+                    <number>0</number>
                    </property>
                    <property name="iconSize">
                     <size>
@@ -940,7 +1006,7 @@ border-radius: 10px;</string>
                    </property>
                    <property name="font">
                     <font>
-                     <family>Franklin Gothic</family>
+                     <family>Franklin Gothic Medium</family>
                      <pointsize>12</pointsize>
                     </font>
                    </property>
@@ -962,9 +1028,12 @@ border-radius: 10px;</string>
                   <widget class="QComboBox" name="Table5_Status">
                    <property name="font">
                     <font>
-                     <family>Franklin Gothic</family>
+                     <family>Franklin Gothic Medium</family>
                      <pointsize>12</pointsize>
                     </font>
+                   </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
                    </property>
                    <property name="layoutDirection">
                     <enum>Qt::LayoutDirection::LeftToRight</enum>
@@ -1001,7 +1070,7 @@ QComboBox QAbstractItemView {
 </string>
                    </property>
                    <property name="currentIndex">
-                    <number>-1</number>
+                    <number>0</number>
                    </property>
                    <property name="iconSize">
                     <size>
@@ -1058,7 +1127,7 @@ border-radius: 10px;</string>
                    </property>
                    <property name="font">
                     <font>
-                     <family>Franklin Gothic</family>
+                     <family>Franklin Gothic Medium</family>
                      <pointsize>12</pointsize>
                     </font>
                    </property>
@@ -1086,9 +1155,12 @@ border-radius: 10px;</string>
                    </property>
                    <property name="font">
                     <font>
-                     <family>Franklin Gothic</family>
+                     <family>Franklin Gothic Medium</family>
                      <pointsize>12</pointsize>
                     </font>
+                   </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
                    </property>
                    <property name="layoutDirection">
                     <enum>Qt::LayoutDirection::LeftToRight</enum>
@@ -1125,7 +1197,7 @@ QComboBox QAbstractItemView {
 </string>
                    </property>
                    <property name="currentIndex">
-                    <number>-1</number>
+                    <number>0</number>
                    </property>
                    <property name="iconSize">
                     <size>
@@ -1182,7 +1254,7 @@ border-radius: 10px;</string>
                    </property>
                    <property name="font">
                     <font>
-                     <family>Franklin Gothic</family>
+                     <family>Franklin Gothic Medium</family>
                      <pointsize>12</pointsize>
                     </font>
                    </property>
@@ -1204,9 +1276,12 @@ border-radius: 10px;</string>
                   <widget class="QComboBox" name="Table2_Status">
                    <property name="font">
                     <font>
-                     <family>Franklin Gothic</family>
+                     <family>Franklin Gothic Medium</family>
                      <pointsize>12</pointsize>
                     </font>
+                   </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
                    </property>
                    <property name="layoutDirection">
                     <enum>Qt::LayoutDirection::LeftToRight</enum>
@@ -1243,7 +1318,7 @@ QComboBox QAbstractItemView {
 </string>
                    </property>
                    <property name="currentIndex">
-                    <number>-1</number>
+                    <number>0</number>
                    </property>
                    <property name="iconSize">
                     <size>
@@ -1300,7 +1375,7 @@ border-radius: 10px;</string>
                    </property>
                    <property name="font">
                     <font>
-                     <family>Franklin Gothic</family>
+                     <family>Franklin Gothic Medium</family>
                      <pointsize>12</pointsize>
                     </font>
                    </property>
@@ -1322,9 +1397,12 @@ border-radius: 10px;</string>
                   <widget class="QComboBox" name="Table3_Status">
                    <property name="font">
                     <font>
-                     <family>Franklin Gothic</family>
+                     <family>Franklin Gothic Medium</family>
                      <pointsize>12</pointsize>
                     </font>
+                   </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
                    </property>
                    <property name="layoutDirection">
                     <enum>Qt::LayoutDirection::LeftToRight</enum>
@@ -1361,7 +1439,7 @@ QComboBox QAbstractItemView {
 </string>
                    </property>
                    <property name="currentIndex">
-                    <number>-1</number>
+                    <number>0</number>
                    </property>
                    <property name="iconSize">
                     <size>
@@ -1404,6 +1482,12 @@ QComboBox QAbstractItemView {
           </layout>
          </widget>
          <widget class="QWidget" name="Menu">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>523</height>
+           </size>
+          </property>
           <layout class="QHBoxLayout" name="horizontalLayout_5">
            <item>
             <widget class="QWidget" name="widget_4" native="true">
@@ -1568,6 +1652,9 @@ QPushButton:pressed {
                    <property name="text">
                     <string>Add Item</string>
                    </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
                   </widget>
                  </item>
                  <item>
@@ -1603,52 +1690,444 @@ QPushButton:pressed {
           </layout>
          </widget>
          <widget class="QWidget" name="Orders">
-          <widget class="QLabel" name="label_6">
-           <property name="geometry">
-            <rect>
-             <x>0</x>
-             <y>0</y>
-             <width>679</width>
-             <height>521</height>
-            </rect>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>26</pointsize>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Mahad</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignmentFlag::AlignCenter</set>
-           </property>
-          </widget>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="styleSheet">
+           <string>border-radius: 22px;</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_19">
+           <item>
+            <layout class="QVBoxLayout" name="OrderListLayout"/>
+           </item>
+           <item>
+            <spacer name="verticalSpacer_3">
+             <property name="orientation">
+              <enum>Qt::Orientation::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
          </widget>
          <widget class="QWidget" name="Billing">
-          <widget class="QLabel" name="label_7">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>0</y>
-             <width>679</width>
-             <height>521</height>
-            </rect>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>26</pointsize>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Mahad</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignmentFlag::AlignCenter</set>
-           </property>
-          </widget>
+          <layout class="QHBoxLayout" name="horizontalLayout_13">
+           <item>
+            <widget class="QWidget" name="BillingPanel" native="true">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: #E8F0FE;
+border-radius: 10px;</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_17">
+              <property name="spacing">
+               <number>12</number>
+              </property>
+              <property name="leftMargin">
+               <number>12</number>
+              </property>
+              <property name="topMargin">
+               <number>12</number>
+              </property>
+              <property name="rightMargin">
+               <number>12</number>
+              </property>
+              <property name="bottomMargin">
+               <number>12</number>
+              </property>
+              <item>
+               <spacer name="verticalSpacer_5">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QLabel" name="BillingPanelTitle">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Franklin Gothic Medium</family>
+                  <pointsize>20</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: black;</string>
+                </property>
+                <property name="text">
+                 <string>Billing Panel</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="BillingUIContainer">
+                <item>
+                 <widget class="QListWidget" name="FoodListWidget">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Franklin Gothic Medium</family>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: #E8F0FE;
+border-radius: 10px;
+border: 2px solid rgb(162, 168, 179);
+color: black;</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="FoodSelect">
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <widget class="QComboBox" name="FoodItemSelect">
+                    <property name="font">
+                     <font>
+                      <family>Franklin Gothic Medium</family>
+                      <pointsize>12</pointsize>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QComboBox {
+    border-radius: 5px;
+    padding: 7px;
+    color: white;
+    background-color: green;
+    text-align: center; /* Center-align the text */
+}
+
+QComboBox:hover {
+    border-color: darkgreen;
+    background-color: #32CD32; /* Lighter green for hover effect */
+}
+
+QComboBox::drop-down {
+    width: 20px; /* Adjust width of the dropdown button */
+    border: none;
+}
+
+
+QComboBox QAbstractItemView {
+    background-color: white;
+    color: black;
+    selection-background-color: #32CD32; /* Highlight selected item in green */
+    selection-color: black;
+    padding: 5px;
+    text-align: center;
+    outline: none; /* Remove focus border for cleaner look */
+}
+</string>
+                    </property>
+                    <property name="currentText">
+                     <string/>
+                    </property>
+                    <property name="currentIndex">
+                     <number>-1</number>
+                    </property>
+                    <property name="placeholderText">
+                     <string>Choose Food Item</string>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>Chicken Vindaloo</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Butter Chicken</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Chicken Curry</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Basmati Rice</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>Large Soda</string>
+                     </property>
+                    </item>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QComboBox" name="FoodQuantitySelect">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QComboBox {
+    border-radius: 5px;
+    padding: 7px;
+    color: white;
+    background-color: green;
+    text-align: center; /* Center-align the text */
+}
+
+QComboBox:hover {
+    border-color: darkgreen;
+    background-color: #32CD32; /* Lighter green for hover effect */
+}
+
+QComboBox::drop-down {
+    width: 20px; /* Adjust width of the dropdown button */
+    border: none;
+}
+
+
+QComboBox QAbstractItemView {
+    background-color: white;
+    color: black;
+    selection-background-color: #32CD32; /* Highlight selected item in green */
+    selection-color: black;
+    padding: 5px;
+    text-align: center;
+    outline: none; /* Remove focus border for cleaner look */
+}
+</string>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>1x</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>2x</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>3x</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>4x</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>5x</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>6x</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>7x</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>8x</string>
+                     </property>
+                    </item>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="DeliveryTypeSelect">
+                  <property name="font">
+                   <font>
+                    <family>Franklin Gothic Medium</family>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="layoutDirection">
+                   <enum>Qt::LayoutDirection::LeftToRight</enum>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QComboBox {
+    border-radius: 5px;
+    padding: 7px;
+    color: white;
+    background-color: green;
+    text-align: center; /* Center-align the text */
+}
+
+QComboBox:hover {
+    border-color: darkgreen;
+    background-color: #32CD32; /* Lighter green for hover effect */
+}
+
+QComboBox::drop-down {
+    width: 20px; /* Adjust width of the dropdown button */
+    border: none;
+}
+
+
+QComboBox QAbstractItemView {
+    background-color: white;
+    color: black;
+    selection-background-color: #32CD32; /* Highlight selected item in green */
+    selection-color: black;
+    padding: 5px;
+    text-align: center;
+    outline: none; /* Remove focus border for cleaner look */
+}
+</string>
+                  </property>
+                  <property name="currentText">
+                   <string/>
+                  </property>
+                  <property name="placeholderText">
+                   <string>Choose Delivery Type</string>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>Tables</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Take Out</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Delivery</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="BillingButtons">
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <widget class="QPushButton" name="FoodAddBtn">
+                    <property name="autoFillBackground">
+                     <bool>false</bool>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton {
+    color: white; /* Text color */
+    background-color: green; /* Background color */
+}
+
+QPushButton:hover {
+    background-color: #32CD32;
+}
+
+QPushButton:pressed {
+    background-color: darkgreen; /* Darker green when pressed */
+    border-color: black; /* Border changes on press */
+}
+</string>
+                    </property>
+                    <property name="text">
+                     <string>ADD</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="FoodFinalizeBtn">
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton {
+    color: white; /* Text color */
+    background-color: red; /* Background color */
+}
+
+QPushButton:hover {
+    background-color: #FF6666;
+}
+
+QPushButton:pressed {
+    background-color: darkred; /* Darker green when pressed */
+    border-color: black; /* Border changes on press */
+}
+</string>
+                    </property>
+                    <property name="text">
+                     <string>FINALIZE</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <spacer name="verticalSpacer_6">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
          </widget>
          <widget class="QWidget" name="Reservations">
           <property name="styleSheet">

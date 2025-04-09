@@ -52,7 +52,59 @@ void MainWindow::on_InventoryBtn_clicked()
     ui->NavigationTabs->setCurrentIndex(5);
 }
 
-\
+void MainWindow::addOrderCards(OrderCard* card) {
+    ui->OrderListLayout->addWidget(card);
+}
+
+void MainWindow::addOrder(OrderCard* card) {
+
+    QString orderId = QString("Order %1-%2")
+                          .arg(QDateTime::currentMSecsSinceEpoch())
+                          .arg(QUuid::createUuid().toString(QUuid::WithoutBraces));
+    card->changeOrderLabelText(orderId);
+    addOrderCards(card);
+}
+
+void MainWindow::on_FoodAddBtn_clicked()
+{
+    QComboBox* foodItemSelect = ui->FoodItemSelect;
+    QComboBox* foodQuantitySelect = ui->FoodQuantitySelect;
+
+    ui->FoodListWidget->addItem(
+        QString("%1 %2")
+            .arg(foodQuantitySelect->currentText(), foodItemSelect->currentText())
+    );
+}
+
+
+void MainWindow::on_FoodFinalizeBtn_clicked()
+{
+    QListWidget* listWidget = ui->FoodListWidget;
+    QComboBox* deliverySelect = ui->DeliveryTypeSelect;
+
+    OrderCard* card = new OrderCard;
+    OrderType type;
+
+    if (deliverySelect->currentIndex() >= 0 && deliverySelect->currentIndex() <= 2) {
+        type = static_cast<OrderType>(deliverySelect->currentIndex());
+    }
+    else type = OrderType::INVALID;
+
+    card->changeOrderType(type);
+
+    int count = listWidget->count();
+    for (int i = 0; i < count; ++i) {
+        QListWidgetItem *item = listWidget->item(i);
+        if (item) {
+            card->addTextToListWidget(item->text());
+        }
+    }
+
+    addOrder(card);
+
+    listWidget->clear();
+
+}
 
 
 void MainWindow::on_LogoutBtn_clicked()
@@ -77,6 +129,4 @@ void MainWindow::setComboBoxColor(QComboBox *comboBox, const QString &status)
         comboBox->setStyleSheet(""); // Reset to default
     }
 }
-
-
 

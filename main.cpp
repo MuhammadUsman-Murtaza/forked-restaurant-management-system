@@ -8,7 +8,6 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    // Check available SQL drivers (debug info)
     QStringList drivers = QSqlDatabase::drivers();
     std::cout << "Available Qt SQL Drivers:\n";
     for (const QString &driver : drivers) {
@@ -18,6 +17,7 @@ int main(int argc, char *argv[])
     // Show login page first
     loginpage login;
     login.show();
+
 
     // Optional: If login succeeds, you can show MainWindow
     // MainWindow w;
