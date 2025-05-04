@@ -734,7 +734,6 @@ QComboBox QAbstractItemView {
        <item>
         <widget class="QStackedWidget" name="NavigationTabs">
          <property name="currentIndex">
-          <number>4</number>
          </property>
          <widget class="QWidget" name="Tables">
           <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -2443,6 +2442,11 @@ border-radius: 10px;</string>
              <property name="editTriggers">
               <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
              </property>
+             <column>
+              <property name="text">
+               <string>Name</string>
+              </property>
+             </column>
              <column>
               <property name="text">
                <string>Name</string>
