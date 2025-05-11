@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "loginpage.h"
+#include "menuitemcard.h"
 
 #include <iostream>
 #include <QDebug>
@@ -14,6 +15,11 @@ MainWindow::MainWindow(QWidget *parent)
     qDebug() << "Available database drivers:" << QSqlDatabase::drivers();
     
     ui->setupUi(this);
+    
+    // Set up frameless window
+    this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    
+    // Initialize combo boxes and line edits
 
 
     qDebug() << "Setting up database connection";
@@ -93,13 +99,15 @@ MainWindow::MainWindow(QWidget *parent)
     occupiedCount = ui->occupiedCount;
     reservedCount = ui->reservedCount;
 
-    qDebug() << "Connecting signals and slots";
     connect(Table1_Status, SIGNAL(currentIndexChanged(int)), this, SLOT(updateTableStatusCounts()));
     connect(Table2_Status, SIGNAL(currentIndexChanged(int)), this, SLOT(updateTableStatusCounts()));
     connect(Table3_Status, SIGNAL(currentIndexChanged(int)), this, SLOT(updateTableStatusCounts()));
     connect(Table4_Status, SIGNAL(currentIndexChanged(int)), this, SLOT(updateTableStatusCounts()));
     connect(Table5_Status, SIGNAL(currentIndexChanged(int)), this, SLOT(updateTableStatusCounts()));
     connect(Table6_Status, SIGNAL(currentIndexChanged(int)), this, SLOT(updateTableStatusCounts()));
+
+    updateTableStatusCounts();
+
 
     qDebug() << "Setting up combo box colors";
     QList<QComboBox*> combos = ui->TableGrid->findChildren<QComboBox*>();
@@ -121,6 +129,11 @@ MainWindow::MainWindow(QWidget *parent)
     qDebug() << "Initializing reservations";
     initializeReservations();
     qDebug() << "MainWindow constructor completed";
+
+    if (orderCount > 0)
+        ui->noOrdersLabel->setVisible(false);
+    else
+        ui->noOrdersLabel->setVisible(true);
 }
 
 void MainWindow::initializeOrders() {
@@ -142,6 +155,7 @@ void MainWindow::initializeOrders() {
             card->addTextToListWidget(orderDetails);
 
             addOrder(card, id);
+            orderCount++;
         }
     }
 }
@@ -160,7 +174,6 @@ void MainWindow::initializeReservations() {
 
             // Add to UI table
             QTableWidget* table = ui->tableWidget_tables;
-            QTableWidgetItem* tableItem;
 
             table->insertRow(currentRow);
 
@@ -219,6 +232,10 @@ void MainWindow::on_InventoryBtn_clicked()
 
 void MainWindow::addOrderCards(OrderCard* card) {
     ui->OrderListLayout->addWidget(card);
+    orderCount++;
+    
+    // Hide "No orders in progress" label when an order is added
+    ui->noOrdersLabel->setVisible(false);
 }
 
 void MainWindow::addOrder(OrderCard* card, int id) {
@@ -477,13 +494,13 @@ void MainWindow::on_addButton_clicked()
 
     // Insert into database
     QSqlQuery query(db);
-    query.prepare("INSERT INTO Menu (item_name, category, price, description) "
-                 "VALUES (:name, :category, :price, :description)");
+    query.prepare("INSERT INTO Inventory (item_name, category, quantity, status) "
+                 "VALUES (:name, :category, :price, :status)");
     
     query.bindValue(":name", itemNameEdit->text());
     query.bindValue(":category", categoryEdit->text());
     query.bindValue(":price", price);
-    query.bindValue(":description", statusCombo->currentText());  // Using statusCombo for description
+    query.bindValue(":status", statusCombo->currentText());  // Using statusCombo for description
 
     if (!query.exec()) {
         QMessageBox::critical(nullptr, "Database Error", 
@@ -572,53 +589,11 @@ void MainWindow::updateTableStatus(int tableId, const QString& status) {
     }
 }
 
-void MainWindow::updateTableStatusCounts()
-{
-    int available = 0;
-    int occupied = 0;
-    int reserved = 0;
-
-    // Check the status of each table and update counts
-    if (Table1_Status->currentText() == "Available") available++;
-    if (Table1_Status->currentText() == "Occupied") occupied++;
-    if (Table1_Status->currentText() == "Reserved") reserved++;
-    updateTableStatus(1, Table1_Status->currentText());
-
-    if (Table2_Status->currentText() == "Available") available++;
-    if (Table2_Status->currentText() == "Occupied") occupied++;
-    if (Table2_Status->currentText() == "Reserved") reserved++;
-    updateTableStatus(2, Table2_Status->currentText());
-
-    if (Table3_Status->currentText() == "Available") available++;
-    if (Table3_Status->currentText() == "Occupied") occupied++;
-    if (Table3_Status->currentText() == "Reserved") reserved++;
-    updateTableStatus(3, Table3_Status->currentText());
-
-    if (Table4_Status->currentText() == "Available") available++;
-    if (Table4_Status->currentText() == "Occupied") occupied++;
-    if (Table4_Status->currentText() == "Reserved") reserved++;
-    updateTableStatus(4, Table4_Status->currentText());
-
-    if (Table5_Status->currentText() == "Available") available++;
-    if (Table5_Status->currentText() == "Occupied") occupied++;
-    if (Table5_Status->currentText() == "Reserved") reserved++;
-    updateTableStatus(5, Table5_Status->currentText());
-
-    if (Table6_Status->currentText() == "Available") available++;
-    if (Table6_Status->currentText() == "Occupied") occupied++;
-    if (Table6_Status->currentText() == "Reserved") reserved++;
-    updateTableStatus(6, Table6_Status->currentText());
-
-    // Update the line edits with the new counts
-    availableCount->setText(QString::number(available));
-    occupiedCount->setText(QString::number(occupied));
-    reservedCount->setText(QString::number(reserved));
-}
 
 void MainWindow::loadMenuItems()
 {
     QSqlQuery query(db);
-    if (!query.exec("SELECT item_name, category, price, description FROM Menu ORDER BY category, item_name")) {
+    if (!query.exec("SELECT food_name, food_price FROM Menu ORDER by food_name")) {
         QMessageBox::warning(nullptr, "Database Error", 
             QString("Failed to load menu items: %1").arg(query.lastError().text()));
         return;
@@ -727,4 +702,131 @@ void MainWindow::on_tableWidget_tables_itemDoubleClicked(QTableWidgetItem *item)
 
     QMessageBox::information(this, "Success", "Reservation deleted successfully");
 }
+
+
+void MainWindow::updateTableStatusCounts()
+{
+    int available = 0;
+    int occupied = 0;
+    int reserved = 0;
+
+    // Check the status of each table and update counts
+    if (Table1_Status->currentText() == "Available") available++;
+    if (Table1_Status->currentText() == "Occupied") occupied++;
+    if (Table1_Status->currentText() == "Reserved") reserved++;
+    updateTableStatus(1, Table1_Status->currentText());
+
+    if (Table2_Status->currentText() == "Available") available++;
+    if (Table2_Status->currentText() == "Occupied") occupied++;
+    if (Table2_Status->currentText() == "Reserved") reserved++;
+    updateTableStatus(2, Table2_Status->currentText());
+
+    if (Table3_Status->currentText() == "Available") available++;
+    if (Table3_Status->currentText() == "Occupied") occupied++;
+    if (Table3_Status->currentText() == "Reserved") reserved++;
+    updateTableStatus(3, Table3_Status->currentText());
+
+    if (Table4_Status->currentText() == "Available") available++;
+    if (Table4_Status->currentText() == "Occupied") occupied++;
+    if (Table4_Status->currentText() == "Reserved") reserved++;
+    updateTableStatus(4, Table4_Status->currentText());
+
+    if (Table5_Status->currentText() == "Available") available++;
+    if (Table5_Status->currentText() == "Occupied") occupied++;
+    if (Table5_Status->currentText() == "Reserved") reserved++;
+    updateTableStatus(5, Table5_Status->currentText());
+
+    if (Table6_Status->currentText() == "Available") available++;
+    if (Table6_Status->currentText() == "Occupied") occupied++;
+    if (Table6_Status->currentText() == "Reserved") reserved++;
+    updateTableStatus(6, Table6_Status->currentText());
+
+    // Update the line edits with the new counts
+    availableCount->setText(QString::number(available));
+    occupiedCount->setText(QString::number(occupied));
+    reservedCount->setText(QString::number(reserved));
+
+}
+
+void MainWindow::on_AdditemBtn_clicked()
+{
+    // Get references to your input fields
+    QLineEdit* itemName = ui->ItemName;
+    QLineEdit* price = ui->Price;
+    
+    // Check if the fields are not empty
+    if (!itemName->text().isEmpty() && !price->text().isEmpty()) {
+        // Create a new menu item card
+        createMenuItemCard(itemName->text(), "", price->text());
+        
+        // Clear the input fields
+        itemName->clear();
+        price->clear();
+        
+        // Set focus back to item name field
+        itemName->setFocus();
+    }
+}
+
+void MainWindow::createMenuItemCard(const QString& name, const QString& description, const QString& price)
+{
+    // Create a new menu item card widget
+    MenuItemCard* card = new MenuItemCard(name, description, price, this);
+    
+    // Add the card to the menu items layout
+    ui->menuItemsLayout->addWidget(card);
+}
+
+// Window control buttons implementation
+void MainWindow::on_pushButton_2_clicked()
+{
+    // Minimize button
+    this->setWindowState(Qt::WindowMinimized);
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    // Maximize/Restore button
+    if(this->isMaximized()) {
+        this->showNormal();
+    } else {
+        this->showMaximized();
+    }
+}
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    // Close button
+    this->close();
+}
+
+// Add these methods to handle window dragging
+// void MainWindow::mousePressEvent(QMouseEvent* event)
+// {
+//     if (event->button() == Qt::LeftButton) {
+//         // Check if the click position is in the header area
+//         if (event->pos().y() < 50) {
+//             dragPosition = event->globalPosition().toPoint() - frameGeometry().topLeft();
+//             event->accept();
+//         }
+//     }
+// }
+
+// void MainWindow::mouseMoveEvent(QMouseEvent* event)
+// {
+//     if (event->buttons() & Qt::LeftButton) {
+//         // Only move if the drag started in the header area
+//         if (!dragPosition.isNull()) {
+//             move(event->globalPosition().toPoint() - dragPosition);
+//             event->accept();
+//         }
+//     }
+// }
+
+// void MainWindow::mouseReleaseEvent(QMouseEvent* event)
+// {
+//     // Reset dragPosition when mouse is released
+//     dragPosition = QPoint();
+//     event->accept();
+// }
 
